@@ -9,7 +9,7 @@ type person struct {
 	Age  int
 }
 
-type doubleZero struct {
+type citicen struct {
 	person
 	LicenseToKill bool
 }
@@ -18,7 +18,7 @@ func (p person) Greeting() {
 	fmt.Println("I'm just a regular person.")
 }
 
-func (dz doubleZero) Greeting() {
+func (c citicen) Greeting() {
 	fmt.Println("Miss Moneypenny, so good to see you.")
 }
 
@@ -28,7 +28,7 @@ func main() {
 		Age:  44,
 	}
 
-	p2 := doubleZero{
+	p2 := citicen{
 		person: person{
 			Name: "James Bond",
 			Age:  23,

@@ -14,7 +14,7 @@ func filter(numbers []int, callback func(int) bool) []int {
 
 func main() {
 	xs := filter([]int{1, 2, 3, 4}, func(n int) bool {
-		return n > 1
+		return n > 2
 	})
 	fmt.Println(xs) // [2 3 4]
 }
