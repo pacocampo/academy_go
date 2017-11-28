@@ -10,12 +10,6 @@ type person struct {
 	Age  int
 }
 
-func (p person) String() string {
-	return fmt.Sprintf("YAYAYA %s: %d", p.Name, p.Age)
-}
-
-// ByAge implements sort.Interface for []person based on
-// the Age field.
 type ByAge []person
 
 func (a ByAge) Len() int           { return len(a) }
