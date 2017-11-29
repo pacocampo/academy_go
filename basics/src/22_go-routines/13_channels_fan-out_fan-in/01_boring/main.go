@@ -8,10 +8,11 @@ import (
 
 func main() {
 	c := fanIn(boring("Joe"), boring("Ann"))
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 20; i++ {
 		fmt.Println(<-c)
 	}
 	fmt.Println("You're both boring; I'm leaving.")
+	fmt.Println(<-c)
 }
 
 func boring(msg string) <-chan string {
@@ -19,6 +20,7 @@ func boring(msg string) <-chan string {
 	go func() {
 		for i := 0; ; i++ {
 			c <- fmt.Sprintf("%s %d", msg, i)
+			fmt.Println("iterate")
 			time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
 		}
 	}()
@@ -45,21 +47,6 @@ func fanIn(input1, input2 <-chan string) <-chan string {
 code source:
 Rob Pike
 https://talks.golang.org/2012/concurrency.slide#25
-*/
-
-/*
-FAN OUT
-Multiple functions reading from the same channel until that channel is closed
-
-FAN IN
-A function can read from multiple inputs and proceed until all are closed by
-multiplexing the input channels onto a single channel that's closed when
-all the inputs are closed.
-
-PATTERN
-there's a pattern to our pipeline functions:
--- stages close their outbound channels when all the send operations are done.
--- stages keep receiving values from inbound channels until those channels are closed.
 
 source:
 https://blog.golang.org/pipelines

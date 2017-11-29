@@ -10,13 +10,9 @@ func main() {
 	in := gen()
 
 	// FAN OUT
-	// Multiple functions reading from the same channel until that channel is closed
-	// Distribute work across multiple functions (ten goroutines) that all read from in.
 	xc := fanOut(in, 10)
 
 	// FAN IN
-	// multiplex multiple channels onto a single channel
-	// merge the channels from c0 through c9 onto a single channel
 	for n := range merge(xc...) {
 		fmt.Println(n)
 	}
@@ -79,8 +75,6 @@ func merge(cs ...<-chan int) <-chan int {
 		go output(c)
 	}
 
-	// Start a goroutine to close out once all the output goroutines are
-	// done.  This must start after the wg.Add call.
 	go func() {
 		wg.Wait()
 		close(out)
@@ -90,6 +84,6 @@ func merge(cs ...<-chan int) <-chan int {
 
 /*
 CHALLENGE #1:
--- This code throws an error: fatal error: all goroutines are asleep - deadlock!
--- fix this code!
+--Esté codigo lanza un deadlock
+-- fix it!
 */

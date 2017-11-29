@@ -49,11 +49,7 @@ func fact(n int) int {
 
 /*
 CHALLENGE #1:
--- Change the code above to execute 1,000 factorial computations concurrently and in parallel.
--- Use the "fan out / fan in" pattern
+-- cambia el código de arriba para ejecutar 1000 veces un factorial usando fanout fanin
 
-CHALLENGE #2:
-WATCH MY SOLUTION BEFORE DOING THIS CHALLENGE #2
--- While running the factorial computations, try to find how much of your resources are being used.
--- Post the percentage of your resources being used to this discussion: https://goo.gl/BxKnOL
-*/
+
+

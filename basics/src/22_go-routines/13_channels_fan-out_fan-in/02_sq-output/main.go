@@ -21,7 +21,6 @@ func main() {
 }
 
 func gen(nums ...int) chan int {
-	fmt.Printf("TYPE OF NUMS %T\n", nums) // just FYI
 
 	out := make(chan int)
 	go func() {
@@ -47,8 +46,8 @@ func sq(in chan int) chan int {
 func merge(cs ...chan int) chan int {
 	fmt.Printf("TYPE OF CS: %T\n", cs) // just FYI
 
-	out := make(chan int)
-	var wg sync.WaitGroup
+	out := make(chan int) //new channel
+	var wg sync.WaitGroup //create a new wait group to manage all goroutines
 	wg.Add(len(cs))
 
 	for _, c := range cs {
@@ -67,27 +66,3 @@ func merge(cs ...chan int) chan int {
 
 	return out
 }
-
-/*
-FAN OUT
-Multiple functions reading from the same channel until that channel is closed
-
-FAN IN
-A function can read from multiple inputs and proceed until all are closed by
-multiplexing the input channels onto a single channel that's closed when
-all the inputs are closed.
-
-PATTERN
-there's a pattern to our pipeline functions:
--- stages close their outbound channels when all the send operations are done.
--- stages keep receiving values from inbound channels until those channels are closed.
-
-source:
-https://blog.golang.org/pipelines
-*/
-
-/*
-CHALLENGE #1
-When know HOW to do fan out / fan in, but do we know WHY?
-Why would we want to do fan out / fan in?
-*/
