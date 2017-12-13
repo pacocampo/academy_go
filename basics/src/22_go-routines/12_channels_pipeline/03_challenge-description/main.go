@@ -26,6 +26,5 @@ func factorial(n int) chan int {
 
 /*
 CHALLENGE #1:
--- Change the code above to execute 100 factorial computations concurrently and in parallel.
--- Use the "pipeline" pattern to accomplish this
+-- Genera un factorial que se ejecute 100 veces con pipelines
 */

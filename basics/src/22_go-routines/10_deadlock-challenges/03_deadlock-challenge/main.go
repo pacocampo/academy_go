@@ -16,5 +16,5 @@ func main() {
 	fmt.Println(<-c)
 }
 
-// Why does this only print zero?
-// And what can you do to get it to print all 0 - 9 numbers?
+// Porqué imprime 0?
+// Cómo solucionar para que imprima todos los dígitos?

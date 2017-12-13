@@ -21,8 +21,7 @@ func main() {
 }
 
 /*
-Even easier is just to create a new variable,
-using a declaration style that may seem odd but works fine in Go.
+
 
 SOURCE:
 https://golang.org/doc/faq#closures_and_goroutines

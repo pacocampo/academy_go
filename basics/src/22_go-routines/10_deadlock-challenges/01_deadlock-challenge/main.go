@@ -10,6 +10,6 @@ func main() {
 	fmt.Println(<-c)
 }
 
-// This results in a deadlock.
-// Can you determine why?
-// And what would you do to fix it?
+// Esto origina un deadlock.
+// porqué?
+// cómo arreglarlo?
